@@ -1,15 +1,11 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,20 +13,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHolder> {
-    private OnSightListener mOnSightListener;
+public class FindAdapter extends RecyclerView.Adapter<FindAdapter.ViewHolder> {
+    private FindAdapter.OnSightListener mOnSightListener;
     private Context context;
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView nameTextView;
+        public android.widget.TextView nameTextView;
         public ImageView fotoView;
         public TextView TextView;
 
-        OnSightListener onSightListener;
+        FindAdapter.OnSightListener onSightListener;
 
-        public ViewHolder(View itemView, OnSightListener onSightListener) {
+        public ViewHolder(View itemView, FindAdapter.OnSightListener onSightListener) {
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.textView_surname);
             TextView = (TextView) itemView.findViewById(R.id.textall);
@@ -46,62 +45,54 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     }
 
     @Override
-    public ContactAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FindAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View contactView = inflater.inflate(R.layout.item_contant, parent, false);
-        ViewHolder viewHolder = new ViewHolder(contactView,mOnSightListener);
+        View findView = inflater.inflate(R.layout.item_contant, parent, false);
+        FindAdapter.ViewHolder viewHolder = new FindAdapter.ViewHolder(findView,mOnSightListener);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Contact contact = mContacts.get(position);
+    public void onBindViewHolder(@NonNull FindAdapter.ViewHolder holder, int position) {
+        Find find = mContacts.get(position);
         // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
-        textView.setText(contact.getName());
+        textView.setText(find.getName());
         ImageView imageView = holder.fotoView;
         Picasso.with(context)
-                .load(contact.getPhoto())
+                .load(find.getPhoto())
                 .error(R.drawable.ic_launcher_background)
                 .placeholder(R.drawable.ic_launcher_background)
                 .resize(0, 227)
                 .into(imageView);
-        /*
-        было
-        imageView.setImageResource(contact.getlastName());
-        */
-
-        //imageView.setImageResource(contact.getIMg());
         TextView textView1 = holder.TextView;
-        textView1.setText(contact.getdate());
+        textView1.setText(find.getdate());
     }
 
     public interface OnSightListener {
         void onSightClick(int position);
     }
-    public ContactAdapter(ArrayList<Contact> contacts, OnSightListener onSightListener) {
-        mContacts = contacts;
-        notifyDataSetChanged();
-        this.mOnSightListener = onSightListener;
-    }
-    public void filterList(ArrayList<Contact> filteredList) {
-        mContacts = filteredList;
-        notifyDataSetChanged();
-    }
-    @Override
-    public int getItemCount() {
-        return mContacts.size();
-    }
-    public void remove() {
+
+    public void clearApplications() {
         int size = this.mContacts.size();
         if (size > 0) {
             for (int i = 0; i < size; i++) {
                 mContacts.remove(0);
             }
+
             this.notifyItemRangeRemoved(0, size);
         }
     }
-    private List<Contact> mContacts;
+    public FindAdapter(ArrayList<Find> contacts, FindAdapter.OnSightListener onSightListener) {
+        mContacts = contacts;
+        this.mOnSightListener = onSightListener;
+    }
+    @Override
+    public int getItemCount() {
+        return mContacts.size();
+    }
+
+    private List<Find> mContacts;
     // Pass in the contact array into the constructor
 }

@@ -11,71 +11,79 @@
         android:id="@+id/namedep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="480dp"
-        android:text="Комментарий "
-        android:textColor="@color/black"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Добавьте комментарий:"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.025"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Textinfo" />
 
     <ImageView
         android:id="@+id/map2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="10dp"
         android:onClick="map"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ink"
         app:srcCompat="@android:drawable/ic_dialog_map" />
 
     <TextView
         android:id="@+id/Namedep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:text="TextView"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/Foto"
-        android:layout_width="379dp"
-        android:layout_height="227dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Namedep"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="48dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/roundedbutton"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/outline_west_white_24dp"
         android:fontFamily="@font/copse"
         android:onClick="goBack"
-        android:text="Назад"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.919"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ink" />
 
     <TextView
         android:id="@+id/Textinfo"
-        android:layout_width="379dp"
+        android:layout_width="370dp"
         android:layout_height="166dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Foto" />
 
@@ -83,26 +91,32 @@
         android:id="@+id/insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/copse"
         android:onClick="Klic"
         android:text="Добавить "
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.68"
-        app:layout_constraintStart_toEndOf="@+id/map2" />
+        app:layout_constraintStart_toEndOf="@+id/map2"
+        app:layout_constraintTop_toBottomOf="@+id/ink" />
 
     <EditText
         android:id="@+id/ink"
-        android:layout_width="382dp"
+        android:gravity="top|left"
+        android:layout_width="370dp"
         android:layout_height="128dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
+        android:padding="10dp"
+        android:background="@drawable/edit_text_border"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Textinfo"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintTop_toBottomOf="@+id/namedep" />
 </androidx.constraintlayout.widget.ConstraintLayout>

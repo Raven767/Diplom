@@ -72,7 +72,7 @@ public class Registration extends AppCompatActivity {
                             toast.show(); }
                     }
                     else{
-                        Toast toast = Toast.makeText(this, "Ниправельная почта",Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(this, "Не правельная почта",Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }

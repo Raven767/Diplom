@@ -24,13 +24,12 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/roundedbutton"
+        android:background="@drawable/outline_west_white_24dp"
         android:fontFamily="@font/copse"
         android:onClick="clik"
-        android:text="Выход"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
@@ -55,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Название Достопримечательности"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +79,7 @@
         android:layout_marginTop="37dp"
         android:layout_marginEnd="290dp"
         android:text="Дата создания"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Dmap1" />
@@ -93,7 +92,7 @@
         android:layout_marginTop="26dp"
         android:layout_marginEnd="106dp"
         android:text="координата 1"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Dname" />
@@ -118,7 +117,7 @@
         android:layout_marginTop="18dp"
         android:layout_marginEnd="302dp"
         android:text="Информация"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Ddate" />
@@ -156,7 +155,7 @@
         android:layout_marginTop="26dp"
         android:layout_marginEnd="104dp"
         android:text="координата 2"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Dname" />
 
@@ -165,7 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Добавлнеи в БД достопримечательностей"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.356"

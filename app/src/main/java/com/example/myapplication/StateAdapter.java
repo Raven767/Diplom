@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,9 +24,9 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder>{
 
         public ViewHolder(View itemView, StateAdapter.OnSightListener onSightListener) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.textView4);
-            TextView = (TextView) itemView.findViewById(R.id.textView10);
-            textlogin = (TextView) itemView.findViewById(R.id.textView11);
+            nameTextView = (TextView) itemView.findViewById(R.id.textCommit);
+            TextView = (TextView) itemView.findViewById(R.id.textLogin);
+            textlogin = (TextView) itemView.findViewById(R.id.textNamePlace);
             this.onSightListener = onSightListener;
             itemView.setOnClickListener(this);
         }

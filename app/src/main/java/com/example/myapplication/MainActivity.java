@@ -36,6 +36,25 @@ public class MainActivity extends AppCompatActivity {
         login = (EditText) findViewById(R.id.Login);
         parol = (TextInputLayout) findViewById(R.id.Password);
         db = new DBHelper(this);
+
+        ContentValues cv =new ContentValues();
+        SQLiteDatabase dbHelper = db.getReadableDatabase();
+        Cursor c = dbHelper.query("plase", null, null, null, null, null, null);
+        if (c.moveToFirst()){
+            int id = c.getColumnIndex("id");
+            int idColIndex = c.getColumnIndex("plece");
+            int plase1ColIndex = c.getColumnIndex("map1");
+            int plase2ColIndex = c.getColumnIndex("map2");
+            int date = c.getColumnIndex("date");
+            int emailColIndex = c.getColumnIndex("info");
+            do {
+                Log.d(LOG_TAG,"id = " + c.getString(id)+"plece = " + c.getString(idColIndex) + ", map1 = "+ c.getString(plase1ColIndex) + ", map2 = "+ c.getString(plase2ColIndex)+ ", date = "+ c.getString(date)+", info = "+ c.getString(emailColIndex));
+            }
+            while (c.moveToNext());
+        }
+        else
+            Log.d(LOG_TAG, "0 rows");
+        c.close();
     }
 
 
@@ -80,28 +99,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void Go(View v){
-        ContentValues cv =new ContentValues();
-        SQLiteDatabase dbHelper = db.getReadableDatabase();
         switch (v.getId()){
             case R.id.Go:
                 Toast toast = Toast.makeText(this, "Вы зашли как гость",Toast.LENGTH_LONG);
                 toast.show();
-
-                Cursor c = dbHelper.query("plase", null, null, null, null, null, null);
-                if (c.moveToFirst()){
-                    int idColIndex = c.getColumnIndex("plece");
-                    int plase1ColIndex = c.getColumnIndex("map1");
-                    int plase2ColIndex = c.getColumnIndex("map2");
-                    int date = c.getColumnIndex("date");
-                    int emailColIndex = c.getColumnIndex("info");
-                    do {
-                        Log.d(LOG_TAG,"plece = " + c.getString(idColIndex) + ", map1 = "+ c.getString(plase1ColIndex) + ", map2 = "+ c.getString(plase2ColIndex)+ ", date = "+ c.getString(date)+", info = "+ c.getString(emailColIndex));
-                    }
-                    while (c.moveToNext());
-                }
-                else
-                    Log.d(LOG_TAG, "0 rows");
-                c.close();
 
                 Intent intent =new Intent(this, MainActivity2.class);
                 startActivity(intent);

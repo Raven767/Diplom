@@ -15,19 +15,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
 public class Info extends AppCompatActivity {
+
+    ArrayList<String> images = new ArrayList<String>();
+
     private TextView Name,alltext;
     private EditText test;
     private ImageView Foto,map;
     private Button back,in;
     DBHelper dbHelper;
     final String LOG_TAG ="myLogs";
-
+    int s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-
+        s=0;
         map = (ImageView) findViewById(R.id.map2);
         Name = (TextView) findViewById(R.id.Namedep);
         Foto = (ImageView) findViewById(R.id.Foto);
@@ -37,13 +44,21 @@ public class Info extends AppCompatActivity {
         test = (EditText) findViewById(R.id.ink);
         dbHelper = new DBHelper(this);
 
+        //images.add();
         String name = getIntent().getStringExtra("plase");
         String info = getIntent().getStringExtra("info");
-
-        int image = getIntent().getIntExtra("name", 0);
-        Foto.setImageResource(image);
+        String image = getIntent().getStringExtra("img");
         Name.setText(name);
         alltext.setText(info);
+
+        //Foto.setImageResource(image);
+
+        Picasso.with(this)
+                .load(image)
+                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.ic_launcher_background)
+                .resize(0, 227)
+                .into(Foto);
     }
     public void goBack(View v){
         switch (v.getId()) {
@@ -56,11 +71,11 @@ public class Info extends AppCompatActivity {
         }
     }
     public void map(View v){
-        String name = Name.getText().toString();
+        String namel = Name.getText().toString();
         switch (v.getId()) {
             case R.id.map2:
                 Intent intent = new Intent(this, map2.class);
-                intent.putExtra("name", name);
+                intent.putExtra("name", namel);
                 startActivity(intent);
                 break;
             default:
@@ -70,7 +85,6 @@ public class Info extends AppCompatActivity {
 
     public void Klic(View v){
         String login =  getIntent().getStringExtra("login");
-
         ContentValues cv =new ContentValues();
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         SQLiteDatabase db2 = dbHelper.getReadableDatabase();

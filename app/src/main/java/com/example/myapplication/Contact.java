@@ -9,24 +9,28 @@ import java.util.List;
 
 public class Contact {
 
+    private int Id;
     private String Name;
-    private int foto;
-    private String text;
+    private String date;
     private String info;
-    private String img;
-    public Contact(String name,int Foto, String Text,String Info) {
-        Name = name;
-        foto = Foto;
-        text = Text;
-        info = Info;
-    }
-    public String getName() {return Name;}
-    public int getlastName() {return foto;}
-    public String getText() {return text;}
-    public String getInfo() {return info;}
-    public String getIMg() {return img;}
+    private String photo;
 
-    public static ArrayList<Contact> createContactsList(int numContacts,String[] myInts,String[] mydate,String[] inform) {
+    public Contact(int id,String name,String Date,String Info,String Photo) {
+        Id = id;
+        Name = name;
+        date = Date;
+        info = Info;
+        photo = Photo;
+    }
+    public int getID(){return  Id;};
+    public String getName() {return Name;}
+    public String getdate() {return date;}
+    public String getInfo() {return info;}
+    public String getPhoto() {return photo;}
+
+    public static ArrayList<Contact> createContactsList(int numContacts,int ID[],String[] myInts,String[] mydate,String[] inform,String photo[]) {
+        ArrayList<Contact> contacts = new ArrayList<Contact>();
+        /*
         List<Integer> massive = new ArrayList<>();
         massive.add(R.drawable.krepostoreshek);
         massive.add(R.drawable.tikhvinskiymonastyr);
@@ -42,10 +46,17 @@ public class Contact {
                 massive.add(R.drawable.non);
             }
         }
+         изначальное
         ArrayList<Contact> contacts = new ArrayList<Contact>();
         for (int i = 1; i <= numContacts; i++) {
             contacts.add(new Contact(myInts[i-1], massive.get(i - 1),mydate[i-1],inform[i-1]));
         }
+         ArrayList<Contact> contacts = new ArrayList<Contact>();
+        for (int i = 1; i <= numContacts; i++) {
+            contacts.add(new Contact(myInts[i-1],mydate[i-1],inform[i-1], photo[i-1]));
+        }
+        return contacts;
+        */
         return contacts;
     }
 }
