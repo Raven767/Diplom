@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,8 +19,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Map extends AppCompatActivity {
-    private Button exit,see,inn;
+    private Button exit,see,inn,map;
     private EditText name,map1,map2,date,info;
+    private GoogleMap googleMap;
 
     final String LOG_TAG ="myLogs";
     DBHelper dbHelper;
@@ -36,8 +36,15 @@ public class Map extends AppCompatActivity {
         map2 = (EditText) findViewById(R.id.Dmap2);
         info = (EditText) findViewById(R.id.Dinfo);
         date = (EditText) findViewById(R.id.Ddate);
+        map = (Button) findViewById(R.id.addmap);
         dbHelper = new DBHelper(this);
+        String mapmarks1 = getIntent().getStringExtra("map1");
+        String mapmarks2 = getIntent().getStringExtra("map2");
+        map1.setText(mapmarks1);
+        map2.setText(mapmarks2);
     }
+
+
     public void clik(View v) {
         switch (v.getId()) {
             case R.id.button2:
@@ -52,6 +59,16 @@ public class Map extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.button3:
                 Intent intent = new Intent(this, MainActivity2.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+    }
+    public void mapadd(View v) {
+        switch (v.getId()) {
+            case R.id.addmap:
+                Intent intent = new Intent(this, MapAdd.class);
                 startActivity(intent);
                 break;
             default:
@@ -89,4 +106,6 @@ public class Map extends AppCompatActivity {
                 break;
         }
     }
+
+
 }

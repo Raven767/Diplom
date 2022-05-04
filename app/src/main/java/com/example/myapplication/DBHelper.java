@@ -21,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Log.d(LOG_TAG,"---onCreate database ---");
         db.execSQL(" create table IF NOT EXISTS users(login text primary key,email text,parol text);");
-        db.execSQL("create table IF NOT EXISTS plase(id INTEGER,plece text primary key,map1 double,map2 double,date text,info text,photo text);");
+        db.execSQL("create table IF NOT EXISTS plase(id INTEGER primary key autoincrement,plece text ,map1 double,map2 double,date text,info text,photo text);");
         db.execSQL("create table IF NOT EXISTS comments(comment text, place text,login text,FOREIGN KEY(login) REFERENCES users(login), FOREIGN KEY(place) REFERENCES plase(plece));");
 
         Log.d(LOG_TAG,"---insert in database ---");

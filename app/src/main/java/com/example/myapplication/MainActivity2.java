@@ -24,11 +24,10 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity implements ContactAdapter.OnSightListener{
     ArrayList<Contact> contacts;
-    ArrayList<Find> find;
 
     private ContactAdapter adapter;
     private ArrayList<Integer> idList = new ArrayList<Integer>();
-    private ImageView maps,diog,see;
+    private ImageView maps,diog;
     private Button back,comm;
     private EditText found;
     private RecyclerView rvContacts;
@@ -36,8 +35,6 @@ public class MainActivity2 extends AppCompatActivity implements ContactAdapter.O
     private boolean isFiltred = false;
     final String LOG_TAG ="myLogs";
     DBHelper db;
-    int i=0;
-    int j;
     private int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +45,6 @@ public class MainActivity2 extends AppCompatActivity implements ContactAdapter.O
         comm = (Button) findViewById(R.id.button6);
         maps = (ImageView) findViewById(R.id.Map);
         diog = (ImageView) findViewById(R.id.Diogramma);
-        see = (ImageView) findViewById(R.id.imageView7);
         rvContacts = (RecyclerView) findViewById(R.id.rvContacts);
 
         createExampleList();
@@ -73,37 +69,6 @@ public class MainActivity2 extends AppCompatActivity implements ContactAdapter.O
                 }
             }
         });
-
-        /*
-        db = new DBHelper(this);
-        int columnIndex = 0;
-        int date = 3;
-        int info =4;
-        int photo = 5;
-        Cursor cursor = db.getTable("plase"); // в классе DB должен быть метод
-        String[] myInts = new String[cursor.getCount()]; // объявляем массив
-        String[] mydate = new String[cursor.getCount()]; // объявляем массив
-        String[] myinfo = new String[cursor.getCount()];
-        String[] myphoto = new String[cursor.getCount()];
-        if (cursor.moveToFirst()) // если курсор не пустой
-        {
-            for (j=0; j < cursor.getCount(); j++)
-            {
-                myInts[j] = String.valueOf(cursor.getString(columnIndex));
-                mydate[j] = String.valueOf(cursor.getString(date));// заполняем
-                myinfo[j] = String.valueOf(cursor.getString(info));// заполняем
-                myphoto[j] = String.valueOf(cursor.getString(photo));// заполняем
-                cursor.moveToNext();
-                i++;
-            }
-        }
-        cursor.close();
-        contacts = Contact.createContactsList(i,myInts,mydate,myinfo,myphoto);
-        ContactAdapter adapter = new ContactAdapter(contacts,this::onSightClickFind);
-        rvContacts.setAdapter(adapter);
-        rvContacts.setLayoutManager(new LinearLayoutManager(this));
-        //see.performClick();
-         */
     }
 
     private void filter(String text) {
@@ -121,7 +86,6 @@ public class MainActivity2 extends AppCompatActivity implements ContactAdapter.O
     }
     private void createExampleList() {
         SQLiteDatabase db = getBaseContext().openOrCreateDatabase("myDB", MODE_PRIVATE, null);
-        //Cursor cursor = db.getTable("plase"); // в классе DB должен быть метод
         Cursor query = db.rawQuery("SELECT * FROM plase;", null);
         while (query.moveToNext()) {
             count = query.getInt(0);
@@ -152,70 +116,10 @@ public class MainActivity2 extends AppCompatActivity implements ContactAdapter.O
         intent.putExtra("name", contacts.get(position).getdate());
         intent.putExtra("plase", contacts.get(position).getName());
         intent.putExtra("info", contacts.get(position).getInfo());
-        //new было getIMg
         intent.putExtra("img", contacts.get(position).getPhoto());
-
         intent.putExtra("login", login);
-        /*
-        if(isFiltred == true)
-        {
-            intent.putExtra("name", contacts.get(idList.get(position)-1).getdate());
-            intent.putExtra("plase", contacts.get(idList.get(position)-1).getName());
-            intent.putExtra("info", contacts.get(idList.get(position)-1).getInfo());
-            //new было getIMg
-            intent.putExtra("img", contacts.get(idList.get(position)-1).getPhoto());
-
-            intent.putExtra("login", login);
-        }
-
-
-         */
         startActivity(intent);
         finish();
-    }
-
-
-    public void Find(View v){
-        switch (v.getId()){
-            case R.id.imageView7:
-                /*
-                db = new DBHelper(this);
-                String Findу = found.getText().toString();
-                int columnIndex = 0;
-                int date = 3;
-                int info =4;
-                int photo = 5;
-                Cursor cursor = db.findplace(Findу); // в классе DB должен быть метод
-                String[] myInts = new String[cursor.getCount()]; // объявляем массив
-                String[] mydate = new String[cursor.getCount()]; // объявляем массив
-                String[] myinfo = new String[cursor.getCount()];
-                String[] myphoto = new String[cursor.getCount()];
-                if (cursor.moveToFirst()) // если курсор не пустой
-                {
-                    for (j=0; j < cursor.getCount(); j++)
-                    {
-                        myInts[j] = String.valueOf(cursor.getString(columnIndex));
-                        mydate[j] = String.valueOf(cursor.getString(date));// заполняем
-                        myinfo[j] = String.valueOf(cursor.getString(info));// заполняем
-                        myphoto[j] = String.valueOf(cursor.getString(photo));// заполняем
-                        cursor.moveToNext();
-                        i++;
-                    }
-                }
-                if (i==0){
-                    break;
-                }
-                cursor.close();
-                contacts = Contact.createContactsList(i,myInts,mydate,myinfo,myphoto);
-                ContactAdapter adapter = new ContactAdapter(contacts,this::onSightClickFind);
-                rvContacts.setAdapter(adapter);
-                rvContacts.setLayoutManager(new LinearLayoutManager(this));
-
-                 */
-                break;
-            default:
-                break;
-        }
     }
 
 

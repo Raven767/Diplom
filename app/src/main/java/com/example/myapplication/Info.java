@@ -20,7 +20,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class Info extends AppCompatActivity {
-
     ArrayList<String> images = new ArrayList<String>();
 
     private TextView Name,alltext;
@@ -44,14 +43,11 @@ public class Info extends AppCompatActivity {
         test = (EditText) findViewById(R.id.ink);
         dbHelper = new DBHelper(this);
 
-        //images.add();
         String name = getIntent().getStringExtra("plase");
         String info = getIntent().getStringExtra("info");
         String image = getIntent().getStringExtra("img");
         Name.setText(name);
         alltext.setText(info);
-
-        //Foto.setImageResource(image);
 
         Picasso.with(this)
                 .load(image)

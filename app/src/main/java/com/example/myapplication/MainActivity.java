@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         parol = (TextInputLayout) findViewById(R.id.Password);
         db = new DBHelper(this);
 
-        ContentValues cv =new ContentValues();
         SQLiteDatabase dbHelper = db.getReadableDatabase();
         Cursor c = dbHelper.query("plase", null, null, null, null, null, null);
         if (c.moveToFirst()){

@@ -67,12 +67,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
                 .placeholder(R.drawable.ic_launcher_background)
                 .resize(0, 227)
                 .into(imageView);
-        /*
-        было
-        imageView.setImageResource(contact.getlastName());
-        */
-
-        //imageView.setImageResource(contact.getIMg());
         TextView textView1 = holder.TextView;
         textView1.setText(contact.getdate());
     }
