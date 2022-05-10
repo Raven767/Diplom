@@ -64,7 +64,7 @@ public class Registration extends AppCompatActivity {
                             cv.put("parol",parol);
                             db.insert("users",null,cv);
                             Log.d(LOG_TAG,"login = "+login+", email= "+email+", parol= "+parol);
-
+                            ((NewClass) this.getApplication()).setSomeVariable(login);
                             startActivity(intent);
                             toast.show(); }
                         else {

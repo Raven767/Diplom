@@ -53,9 +53,9 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder>{
         TextView textView = holder.nameTextView;
         textView.setText(state.getLog());
         TextView textVieww = holder.textlogin;
-        textVieww.setText(state.getCapital());
+        textVieww.setText(state.getPLACE());
         TextView textView1 = holder.TextView;
-        textView1.setText(state.getFlagResource());
+        textView1.setText(state.getcom());
     }
 
     public interface OnSightListener {

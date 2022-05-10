@@ -18,11 +18,11 @@ public class State {
         return this.log;
     }
 
-    public String getCapital() {
+    public String getPLACE() {
         return this.plase;
     }
 
-    public String getFlagResource() {
+    public String getcom() {
         return this.comm;
     }
 

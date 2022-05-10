@@ -30,20 +30,22 @@ public class Comments extends AppCompatActivity {
         back = (Button) findViewById(R.id.button7);
         db = new DBHelper(this);
 
-        int columnIndex = 0;
-        int date = 1;
-        int info =2;
+        //String login = ((MyApplication) this.getApplication()).getSomeVariable();
+
+        int comments = 0;
+        int place = 1;
+        int person = 2;
         Cursor cursor = db.getTable("comments"); // в классе DB должен быть метод
-        String[] myInts = new String[cursor.getCount()]; // объявляем массив
-        String[] mydate = new String[cursor.getCount()]; // объявляем массив
-        String[] myinfo = new String[cursor.getCount()];
+        String[] mycomments = new String[cursor.getCount()]; // объявляем массив
+        String[] myplace = new String[cursor.getCount()]; // объявляем массив
+        String[] myperson = new String[cursor.getCount()];
         if (cursor.moveToFirst()) // если курсор не пустой
         {
             for (int j = 0; j < cursor.getCount(); j++)
             {
-                myInts[j] = String.valueOf(cursor.getString(columnIndex));
-                mydate[j] = String.valueOf(cursor.getString(date));// заполняем
-                myinfo[j] = String.valueOf(cursor.getString(info));// заполняем
+                mycomments[j] = String.valueOf(cursor.getString(comments));
+                myplace[j] = String.valueOf(cursor.getString(place));// заполняем
+                myperson[j] = String.valueOf(cursor.getString(person));// заполняем
                 cursor.moveToNext();
                 i++;
             }
@@ -51,7 +53,7 @@ public class Comments extends AppCompatActivity {
         cursor.close();
 
         RecyclerView rvContacts = (RecyclerView) findViewById(R.id.newrv);
-        states = State.createContactsList(i,myInts,mydate,myinfo);
+        states = State.createContactsList(i,mycomments,myplace,myperson);
         StateAdapter adapter = new StateAdapter(states,this::onSightClick);
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));

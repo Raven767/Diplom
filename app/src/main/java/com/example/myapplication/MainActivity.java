@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView reg;
     private EditText login;
     private TextInputLayout parol;
+
 
     final String LOG_TAG ="myLogs";
     DBHelper db;
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         {
                             Toast toast = Toast.makeText(this, "Вы зашли как администратор",Toast.LENGTH_LONG);
                             toast.show();
-                            Intent intent = new Intent(this, Map.class);
+                            Intent intent = new Intent(this, Insert.class);
                             startActivity(intent);
                         }
                         else
@@ -97,13 +97,22 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
     public void Go(View v){
         switch (v.getId()){
             case R.id.Go:
                 Toast toast = Toast.makeText(this, "Вы зашли как гость",Toast.LENGTH_LONG);
                 toast.show();
 
+                ((NewClass) this.getApplication()).setSomeVariable("Гость");
+
+                ContentValues cv = new ContentValues();
+                SQLiteDatabase dbin = db.getWritableDatabase();
+                String login = "Гость";
+                cv.put("login",login);
+                dbin.insert("users",null,cv);
                 Intent intent =new Intent(this, MainActivity2.class);
+                intent.putExtra("login", "Гость");
                 startActivity(intent);
                 break;
             default:

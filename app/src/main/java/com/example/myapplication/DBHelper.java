@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 public class DBHelper extends SQLiteOpenHelper {
     final String LOG_TAG="myLogs";
     ContentValues cv =new ContentValues();
+    ContentValues cv1 =new ContentValues();
     public DBHelper(@Nullable Context context) {
         super(context, "myDB",null,1);
     }
@@ -20,11 +21,22 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         Log.d(LOG_TAG,"---onCreate database ---");
-        db.execSQL(" create table IF NOT EXISTS users(login text primary key,email text,parol text);");
-        db.execSQL("create table IF NOT EXISTS plase(id INTEGER primary key autoincrement,plece text ,map1 double,map2 double,date text,info text,photo text);");
+        db.execSQL(" create table IF NOT EXISTS users(id integer primary key autoincrement,login text,email text,parol text);");
+        db.execSQL("create table IF NOT EXISTS plase(id integer primary key autoincrement,plece text ,map1 double,map2 double,date text,info text,photo text);");
         db.execSQL("create table IF NOT EXISTS comments(comment text, place text,login text,FOREIGN KEY(login) REFERENCES users(login), FOREIGN KEY(place) REFERENCES plase(plece));");
 
         Log.d(LOG_TAG,"---insert in database ---");
+        cv1.put("id","1");
+        cv1.put("login","admin");
+        cv1.put("email","admin@mail.ru");
+        cv1.put("parol","admin");
+        db.insert("users",null,cv1);
+        cv1.put("id","2");
+        cv1.put("login","Гость");
+        cv1.put("email","visitor@mail.ru");
+        cv1.put("parol","гость");
+        db.insert("users",null,cv1);
+
         cv.put("id","1");
         cv.put("plece","Крепость орешек");
         cv.put("map1","59.953992");
@@ -115,6 +127,11 @@ public class DBHelper extends SQLiteOpenHelper {
         //String sqlQuery = "select * from plase WHERE plece like '%"+plasename+"%' ; ";
         return db.rawQuery(sqlQuery, null);
     }
+    public Cursor  getPerson(String login) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlQuery = "select login from users where login = " + login + ";";
+        return db.rawQuery(sqlQuery, null);
+    }
 
     public Cursor  getCords() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -127,10 +144,5 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from users where login=? and parol=?", new String[]{login, parol});
         if (cursor.getCount() > 0) return true;
         else return false;
-    }
-    public Cursor getEmailAddress(String emailNo) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String sqlQuery ="select * from plase WHERE plece = " + emailNo + ";";
-        return db.rawQuery(sqlQuery, null);
     }
 }

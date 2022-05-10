@@ -4,21 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -112,12 +107,14 @@ public class MainActivity2 extends AppCompatActivity implements ContactAdapter.O
     @Override
     public void onSightClick(int position) {
         Intent intent = new Intent(this, Info.class);
-        String login =  getIntent().getStringExtra("login");
+
+        //String login =  getIntent().getStringExtra("login");
+
         intent.putExtra("name", contacts.get(position).getdate());
         intent.putExtra("plase", contacts.get(position).getName());
         intent.putExtra("info", contacts.get(position).getInfo());
         intent.putExtra("img", contacts.get(position).getPhoto());
-        intent.putExtra("login", login);
+        //intent.putExtra("login", login);
         startActivity(intent);
         finish();
     }
@@ -136,7 +133,7 @@ public class MainActivity2 extends AppCompatActivity implements ContactAdapter.O
     public void map(View v){
         switch (v.getId()){
             case R.id.Map:
-                Intent intent =new Intent(this, map2.class);
+                Intent intent =new Intent(this, Map.class);
                 startActivity(intent);
                 break;
             default:

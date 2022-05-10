@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -29,6 +28,7 @@ public class Info extends AppCompatActivity {
     DBHelper dbHelper;
     final String LOG_TAG ="myLogs";
     int s;
+    String login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,9 @@ public class Info extends AppCompatActivity {
         alltext = (TextView) findViewById(R.id.Textinfo);
         test = (EditText) findViewById(R.id.ink);
         dbHelper = new DBHelper(this);
+
+        login = ((NewClass) this.getApplication()).getSomeVariable();
+        //login =  getIntent().getStringExtra("login");
 
         String name = getIntent().getStringExtra("plase");
         String info = getIntent().getStringExtra("info");
@@ -70,7 +73,7 @@ public class Info extends AppCompatActivity {
         String namel = Name.getText().toString();
         switch (v.getId()) {
             case R.id.map2:
-                Intent intent = new Intent(this, map2.class);
+                Intent intent = new Intent(this, Map.class);
                 intent.putExtra("name", namel);
                 startActivity(intent);
                 break;
@@ -80,7 +83,7 @@ public class Info extends AppCompatActivity {
     }
 
     public void Klic(View v){
-        String login =  getIntent().getStringExtra("login");
+
         ContentValues cv =new ContentValues();
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         SQLiteDatabase db2 = dbHelper.getReadableDatabase();
@@ -94,19 +97,7 @@ public class Info extends AppCompatActivity {
                 cv.put("login",login);
                 db.insert("comments",null,cv);
                 //Log.d(LOG_TAG,"comment = "+comments+" place = "+name + " login = "+login);
-                Cursor c = db2.query("comments", null, null, null, null, null, null);
-                if (c.moveToFirst()) {
-                    int idColIndex = c.getColumnIndex("comment");
-                    int plase1ColIndex = c.getColumnIndex("place");
-                    int plase2ColIndex = c.getColumnIndex("login");
-                    do {
-                        Log.d(LOG_TAG, "comment = " + c.getString(idColIndex) + ", place = " + c.getString(plase1ColIndex) + ", login = " + c.getString(plase2ColIndex));
-                    }
-                    while (c.moveToNext());
-                }
-                    else
-                    Log.d(LOG_TAG, "0 rows");
-                    c.close();
+
                 break;
             default:
                 break;

@@ -1,15 +1,9 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+
+import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,94 +12,49 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Map extends AppCompatActivity {
-    private Button exit,see,inn,map;
-    private EditText name,map1,map2,date,info;
-    private GoogleMap googleMap;
-
-    final String LOG_TAG ="myLogs";
-    DBHelper dbHelper;
+public class Map extends AppCompatActivity implements OnMapReadyCallback {
+    DBHelper db;
+    int i=0;
+    String Name;
+    private GoogleMap map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        exit = (Button) findViewById(R.id.button2);
-        see = (Button) findViewById(R.id.button3);
-        name = (EditText) findViewById(R.id.Dname);
-        map1 = (EditText) findViewById(R.id.Dmap1);
-        map2 = (EditText) findViewById(R.id.Dmap2);
-        info = (EditText) findViewById(R.id.Dinfo);
-        date = (EditText) findViewById(R.id.Ddate);
-        map = (Button) findViewById(R.id.addmap);
-        dbHelper = new DBHelper(this);
-        String mapmarks1 = getIntent().getStringExtra("map1");
-        String mapmarks2 = getIntent().getStringExtra("map2");
-        map1.setText(mapmarks1);
-        map2.setText(mapmarks2);
+        SupportMapFragment supportMapFragment =
+                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        supportMapFragment.getMapAsync(this::onMapReady);
+
+        Name = getIntent().getStringExtra("name");
     }
+    double v=59.938955;
+    double v1=30.315644;
 
-
-    public void clik(View v) {
-        switch (v.getId()) {
-            case R.id.button2:
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
+    private LatLng spb= new LatLng(v, v1);
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        if (map!=null) {
+            map.moveCamera(
+                    CameraUpdateFactory.newLatLngZoom(spb, 6)
+            );
+            db = new DBHelper(this);
+            int name=1;
+            int date=4;
+            int cord1 = 2;
+            int cord2 = 3;
+            Cursor cursor = db.getCords();
+            if (cursor.moveToFirst()) // если курсор не пустой
+            {
+                for (int j = 0; j < cursor.getCount(); j++)
+                {
+                    LatLng map1= new LatLng(cursor.getDouble(cord1),cursor.getDouble(cord2));
+                    map.addMarker(new MarkerOptions().position(map1).title(cursor.getString(name)).snippet(cursor.getString(date)));
+                    cursor.moveToNext();
+                    i++;
+                }
+            }
+            cursor.close();
         }
     }
-    public void see(View v) {
-        switch (v.getId()) {
-            case R.id.button3:
-                Intent intent = new Intent(this, MainActivity2.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-    }
-    public void mapadd(View v) {
-        switch (v.getId()) {
-            case R.id.addmap:
-                Intent intent = new Intent(this, MapAdd.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-    }
-    public void insert(View v) {
-        ContentValues cv =new ContentValues();
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        switch (v.getId()) {
-            case R.id.button4:
-               if (map1.getText().toString().equals("") || map2.getText().toString().equals(""))
-               {
-                   Toast toast = Toast.makeText(this, "Вы не ввели координаты ",Toast.LENGTH_LONG);
-                   toast.show();
-               }
-               else {
-                   String name1 = name.getText().toString();
-                   String map11 = map1.getText().toString();
-                   String map22 = map2.getText().toString();
-                   String date1 = date.getText().toString();
-                   String info1 = info.getText().toString();
-                   Log.d(LOG_TAG,"--- Insert in users: ---");
-                   cv.put("plece",name1);
-                   cv.put("map1",map11);
-                   cv.put("map2",map22);
-                   cv.put("date",date1);
-                   cv.put("info",info1);
-                   db.insert("plase",null,cv);
-                   Log.d(LOG_TAG,"plece = "+name1+", map1 = "+map11+", map2 = "+ map22+", date = "+date1+", info = "+info1);
-               }
-                break;
-            default:
-                break;
-        }
-    }
-
-
 }
