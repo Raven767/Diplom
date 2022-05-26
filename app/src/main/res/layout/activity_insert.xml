@@ -7,181 +7,217 @@
     android:background="@drawable/sprite"
     tools:context=".Info">
 
-    <Button
-        android:id="@+id/SeeAll"
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_marginTop="201dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/copse"
-        android:onClick="see"
-        android:text=" Просмотр"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ExitFromAdmin"
-        app:layout_constraintTop_toBottomOf="@+id/Link" />
-
-    <Button
-        android:id="@+id/ExitFromAdmin"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/outline_west_white_24dp"
-        android:fontFamily="@font/copse"
-        android:onClick="clik"
+    <fragment
+        android:id="@+id/mapadd1"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="406dp"
+        android:layout_height="236dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/NameOfPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="158dp"
-        android:text="Название Достопримечательности"
-        android:textColor="@color/white"
+    <ScrollView
+        android:layout_width="412dp"
+        android:layout_height="509dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/Dname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="181dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameOfPlace" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="900dp">
 
-    <EditText
-        android:id="@+id/Ddate"
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextDateOfCreate" />
+            <EditText
+                android:id="@+id/Link"
+                android:layout_width="375dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="17dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TextLink" />
 
-    <TextView
-        android:id="@+id/TextInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="302dp"
-        android:text="Информация"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Ddate" />
+            <TextView
+                android:id="@+id/TextInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="306dp"
+                android:text="Информация"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Ddate" />
 
-    <TextView
-        android:id="@+id/TextDateOfCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="293dp"
-        android:text="Дата создания"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Dname" />
+            <TextView
+                android:id="@+id/AddingAttractionsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="82dp"
+                android:text="Добавление в БД достопримечательностей"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/Dinfo"
-        android:layout_width="375dp"
-        android:layout_height="145dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="12dp"
-        android:ems="10"
-        android:gravity="top|left"
-        android:inputType="textMultiLine"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextInformation" />
+            <EditText
+                android:id="@+id/Ddate"
+                android:layout_width="375dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="17dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TextDateOfCreate" />
 
-    <TextView
-        android:id="@+id/textview9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Добавлнеи в БД достопримечательностей"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.356"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+            <TextView
+                android:id="@+id/TextLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="230dp"
+                android:text="Ссылка на изображение"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Dinfo" />
 
-    <Button
-        android:id="@+id/InsertAll"
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/copse"
-        android:onClick="insert"
-        android:text="Добавить"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/SeeAll"
-        app:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                android:id="@+id/InsertCor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginBottom="10dp"
+                android:onClick="mapadd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/SeeAll"
+                app:layout_constraintTop_toBottomOf="@+id/NewFoto"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-    <ImageView
-        android:id="@+id/InsertCor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="359dp"
-        android:onClick="mapadd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Link"
-        app:srcCompat="@android:drawable/ic_dialog_map" />
+            <EditText
+                android:id="@+id/Dname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="182dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/NameOfPlace" />
 
-    <TextView
-        android:id="@+id/TextLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="228dp"
-        android:text="Ссылка на изображение"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Dinfo" />
+            <TextView
+                android:id="@+id/NameOfPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="159dp"
+                android:text="Название Достопримечательности"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/AddingAttractionsText" />
 
-    <EditText
-        android:id="@+id/Link"
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextLink" />
+            <Button
+                android:id="@+id/InsertAll"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/roundedbutton"
+                android:fontFamily="@font/copse"
+                android:onClick="insert"
+                android:text="Добавить"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/NewFoto" />
+
+            <TextView
+                android:id="@+id/TextDateOfCreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="294dp"
+                android:text="Дата создания"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Dname" />
+
+            <Button
+                android:id="@+id/SeeAll"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/roundedbutton"
+                android:fontFamily="@font/copse"
+                android:onClick="see"
+                android:text=" Просмотр"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/InsertAll"
+                app:layout_constraintTop_toBottomOf="@+id/NewFoto" />
+
+            <EditText
+                android:id="@+id/Dinfo"
+                android:layout_width="375dp"
+                android:layout_height="145dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="17dp"
+                android:ems="10"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TextInformation" />
+
+            <ImageView
+                android:id="@+id/NewFoto"
+                android:layout_width="374dp"
+                android:layout_height="176dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Link"
+                app:srcCompat="@drawable/non" />
+
+            <Button
+                android:id="@+id/ExitFromAdmin"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="86dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/outline_west_white_24dp"
+                android:fontFamily="@font/copse"
+                android:onClick="clik"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/InsertCor"
+                app:layout_constraintTop_toBottomOf="@+id/NewFoto" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

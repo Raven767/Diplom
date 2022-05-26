@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,19 +17,20 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder>{
     private StateAdapter.OnSightListener mOnSightListener;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public android.widget.TextView nameTextView;
-        public TextView textlogin;
-        public TextView TextView;
+        public android.widget.TextView commitTextView;
+        public TextView textPlase;
+        public TextView TextLOgin;
 
         StateAdapter.OnSightListener onSightListener;
 
         public ViewHolder(View itemView, StateAdapter.OnSightListener onSightListener) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.textCommit);
-            TextView = (TextView) itemView.findViewById(R.id.textLogin);
-            textlogin = (TextView) itemView.findViewById(R.id.textNamePlace);
+            commitTextView = (TextView) itemView.findViewById(R.id.textCommit);
+            TextLOgin = (TextView) itemView.findViewById(R.id.textLogin);
+            textPlase = (TextView) itemView.findViewById(R.id.textNamePlace);
             this.onSightListener = onSightListener;
             itemView.setOnClickListener(this);
+
         }
 
         @Override
@@ -50,20 +52,23 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull StateAdapter.ViewHolder holder, int position) {
         State state = mContacts.get(position);
         // Set item views based on your views and data model
-        TextView textView = holder.nameTextView;
+        TextView textView = holder.commitTextView;
         textView.setText(state.getLog());
-        TextView textVieww = holder.textlogin;
+        TextView textVieww = holder.textPlase;
         textVieww.setText(state.getPLACE());
-        TextView textView1 = holder.TextView;
+        TextView textView1 = holder.TextLOgin;
         textView1.setText(state.getcom());
+        holder.commitTextView.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public interface OnSightListener {
         void onSightClick(int position);
+
     }
 
     public StateAdapter(ArrayList<State> contacts, OnSightListener onSightListener) {
         mContacts = contacts;
+
         this.mOnSightListener = onSightListener;
     }
     @Override

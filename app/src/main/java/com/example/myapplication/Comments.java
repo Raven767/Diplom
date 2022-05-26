@@ -6,13 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -27,11 +24,11 @@ public class Comments extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
-        back = (Button) findViewById(R.id.button7);
+        back = (Button) findViewById(R.id.ExitFromComments);
+        //подключение к DBHelper
         db = new DBHelper(this);
 
-        //String login = ((MyApplication) this.getApplication()).getSomeVariable();
-
+        //индекс переменных в бд для списка
         int comments = 0;
         int place = 1;
         int person = 2;
@@ -51,20 +48,22 @@ public class Comments extends AppCompatActivity {
             }
         }
         cursor.close();
-
-        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.newrv);
+        //обявление и заполение списка данными
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.ListOfComments);
         states = State.createContactsList(i,mycomments,myplace,myperson);
         StateAdapter adapter = new StateAdapter(states,this::onSightClick);
         rvContacts.setAdapter(adapter);
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
 
     }
+    //обработка нажатия на список
     public void onSightClick(int position) {
 
     }
+    //обработка нажания кнопки назад
     public void lio(View v){
         switch (v.getId()){
-            case R.id.button7:
+            case R.id.ExitFromComments:
                 Intent intent =new Intent(this, MainActivity2.class);
                 startActivity(intent);
                 break;

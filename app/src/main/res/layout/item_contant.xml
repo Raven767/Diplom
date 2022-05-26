@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView_back"
+        android:id="@+id/ForoOfAttraction"
         android:layout_width="0dp"
         android:layout_height="280dp"
         android:layout_marginTop="72dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textall"
+        android:id="@+id/TextAttraction"
         android:layout_width="367dp"
         android:layout_height="95dp"
         android:layout_marginTop="12dp"
@@ -27,17 +27,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_back" />
+        app:layout_constraintTop_toBottomOf="@+id/ForoOfAttraction" />
 
     <TextView
-        android:id="@+id/textView_surname"
+        android:id="@+id/nameOfTheAttraction"
         android:layout_width="370dp"
         android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:text="Название"
         android:textColor="@android:color/primary_text_dark"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView_back"
+        app:layout_constraintBottom_toTopOf="@+id/ForoOfAttraction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent" />

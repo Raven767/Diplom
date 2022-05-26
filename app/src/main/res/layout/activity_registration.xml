@@ -8,14 +8,14 @@
     tools:context=".Registration">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/parolagain"
+        android:id="@+id/Password2"
         android:layout_width="229dp"
         android:layout_height="66dp"
         android:layout_marginTop="20dp"
         app:endIconMode="password_toggle"
-        app:layout_constraintEnd_toEndOf="@+id/parol"
-        app:layout_constraintStart_toStartOf="@+id/parol"
-        app:layout_constraintTop_toBottomOf="@+id/parol">
+        app:layout_constraintEnd_toEndOf="@+id/Password1"
+        app:layout_constraintStart_toStartOf="@+id/Password1"
+        app:layout_constraintTop_toBottomOf="@+id/Password1">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -43,10 +43,10 @@
         android:fontFamily="@font/copse"
         android:onClick="chek1"
         android:text="Зарегестрироваться "
-        app:layout_constraintEnd_toEndOf="@+id/parolagain"
+        app:layout_constraintEnd_toEndOf="@+id/Password2"
         app:layout_constraintHorizontal_bias="0.017"
-        app:layout_constraintStart_toStartOf="@+id/parolagain"
-        app:layout_constraintTop_toBottomOf="@+id/parolagain" />
+        app:layout_constraintStart_toStartOf="@+id/Password2"
+        app:layout_constraintTop_toBottomOf="@+id/Password2" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -60,7 +60,7 @@
         app:srcCompat="@android:drawable/ic_lock_lock" />
 
     <EditText
-        android:id="@+id/mail"
+        android:id="@+id/PersonLogin"
         android:layout_width="229dp"
         android:layout_height="66dp"
         android:ems="10"
@@ -73,18 +73,18 @@
         app:layout_constraintVertical_bias="0.195" />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/PErsonEmail"
         android:layout_width="229dp"
         android:layout_height="66dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/mail"
-        app:layout_constraintStart_toStartOf="@+id/mail"
-        app:layout_constraintTop_toBottomOf="@+id/mail" />
+        app:layout_constraintEnd_toEndOf="@+id/PersonLogin"
+        app:layout_constraintStart_toStartOf="@+id/PersonLogin"
+        app:layout_constraintTop_toBottomOf="@+id/PersonLogin" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageProvile"
         android:layout_width="42dp"
         android:layout_height="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -100,20 +100,20 @@
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/imageProvile"
+        app:layout_constraintStart_toStartOf="@+id/imageProvile"
+        app:layout_constraintTop_toBottomOf="@+id/imageProvile"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/parol"
+        android:id="@+id/Password1"
         android:layout_width="229dp"
         android:layout_height="66dp"
         android:layout_marginTop="20dp"
         app:endIconMode="password_toggle"
-        app:layout_constraintEnd_toEndOf="@+id/name"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/name">
+        app:layout_constraintEnd_toEndOf="@+id/PErsonEmail"
+        app:layout_constraintStart_toStartOf="@+id/PErsonEmail"
+        app:layout_constraintTop_toBottomOf="@+id/PErsonEmail">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

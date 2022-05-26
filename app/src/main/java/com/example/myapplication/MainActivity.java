@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if (login.getText().toString().equals("admin"))
                         {
+                            ((NewClass) this.getApplication()).setSomeVariable(log);
                             Toast toast = Toast.makeText(this, "Вы зашли как администратор",Toast.LENGTH_LONG);
                             toast.show();
                             Intent intent = new Intent(this, Insert.class);
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else
                         {
+                            ((NewClass) this.getApplication()).setSomeVariable(log);
                             Toast toast = Toast.makeText(this, "Добро пожаловать",Toast.LENGTH_LONG);
                             toast.show();
                             Intent intent = new Intent(this, MainActivity2.class);
@@ -105,14 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
 
                 ((NewClass) this.getApplication()).setSomeVariable("Гость");
-
-                ContentValues cv = new ContentValues();
-                SQLiteDatabase dbin = db.getWritableDatabase();
-                String login = "Гость";
-                cv.put("login",login);
-                dbin.insert("users",null,cv);
-                Intent intent =new Intent(this, MainActivity2.class);
-                intent.putExtra("login", "Гость");
+                Intent intent = new Intent(this, MainActivity2.class);
                 startActivity(intent);
                 break;
             default:

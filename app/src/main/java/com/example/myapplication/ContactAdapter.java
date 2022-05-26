@@ -1,15 +1,11 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,13 +28,13 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
         public ViewHolder(View itemView, OnSightListener onSightListener) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.textView_surname);
-            TextView = (TextView) itemView.findViewById(R.id.textall);
-            fotoView = (ImageView) itemView.findViewById(R.id.imageView_back);
+            nameTextView = (TextView) itemView.findViewById(R.id.nameOfTheAttraction);
+            TextView = (TextView) itemView.findViewById(R.id.TextAttraction);
+            fotoView = (ImageView) itemView.findViewById(R.id.ForoOfAttraction);
             this.onSightListener = onSightListener;
             itemView.setOnClickListener(this);
         }
-
+        //обработка нажатия
         @Override
         public void onClick(View v) {
             onSightListener.onSightClick(getAdapterPosition());
@@ -53,11 +49,11 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         ViewHolder viewHolder = new ViewHolder(contactView,mOnSightListener);
         return viewHolder;
     }
-
+    //объявление и нахождение элементов на форме
+    //добавление данных в них
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Contact contact = mContacts.get(position);
-        // Set item views based on your views and data model
         TextView textView = holder.nameTextView;
         textView.setText(contact.getName());
         ImageView imageView = holder.fotoView;
@@ -83,6 +79,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         mContacts = filteredList;
         notifyDataSetChanged();
     }
+
     @Override
     public int getItemCount() {
         return mContacts.size();
@@ -97,5 +94,4 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         }
     }
     private List<Contact> mContacts;
-    // Pass in the contact array into the constructor
 }

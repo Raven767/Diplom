@@ -25,25 +25,24 @@
         android:id="@+id/Login"
         android:layout_width="329dp"
         android:layout_height="61dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/MainLogo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Password"
         android:layout_width="329dp"
         android:layout_height="61dp"
-        android:layout_marginTop="372dp"
+        android:layout_marginTop="40dp"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/Login">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -53,7 +52,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Mainlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Логин"
@@ -64,7 +63,7 @@
         app:layout_constraintStart_toStartOf="@+id/Login" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/Mainpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Пароль"
@@ -102,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Password" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/MainLogo"
         android:layout_width="256dp"
         android:layout_height="187dp"
         android:layout_marginTop="28dp"

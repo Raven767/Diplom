@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/TextOfGid"
         android:layout_width="360dp"
         android:layout_height="239dp"
         android:layout_marginTop="20dp"
@@ -16,13 +16,13 @@
         android:textColor="@color/DarkGray"
         android:textSize="24sp"
         android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="@+id/LogoOfGid"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintStart_toStartOf="@+id/LogoOfGid"
+        app:layout_constraintTop_toBottomOf="@+id/LogoOfGid" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/LogoOfGid"
         android:layout_width="179dp"
         android:layout_height="149dp"
         android:layout_marginTop="212dp"

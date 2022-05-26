@@ -10,9 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity
-            android:name=".MapAdd"
-            android:exported="false" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCdXSlREFXV81p_38yJzG9NYPzE9u3D_x4" />
@@ -35,27 +32,29 @@
             android:exported="false" />
         <activity
             android:name=".Info"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".Insert"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".Diogramma"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity2"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".Registration"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
     </application>
 
 </manifest>

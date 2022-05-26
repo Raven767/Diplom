@@ -6,12 +6,10 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -33,10 +31,10 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        log = (EditText) findViewById(R.id.mail);
-        mail = (EditText) findViewById(R.id.name);
-        parol1 = (TextInputLayout) findViewById(R.id.parol);
-        parol2 = (TextInputLayout) findViewById(R.id.parolagain);
+        log = (EditText) findViewById(R.id.PersonLogin);
+        mail = (EditText) findViewById(R.id.PErsonEmail);
+        parol1 = (TextInputLayout) findViewById(R.id.Password1);
+        parol2 = (TextInputLayout) findViewById(R.id.Password2);
         exit = (Button) findViewById(R.id.create);
         dbHelper = new DBHelper(this);
     }
@@ -64,7 +62,6 @@ public class Registration extends AppCompatActivity {
                             cv.put("parol",parol);
                             db.insert("users",null,cv);
                             Log.d(LOG_TAG,"login = "+login+", email= "+email+", parol= "+parol);
-                            ((NewClass) this.getApplication()).setSomeVariable(login);
                             startActivity(intent);
                             toast.show(); }
                         else {
